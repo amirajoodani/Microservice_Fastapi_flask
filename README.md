@@ -89,3 +89,58 @@ Many organizations successfully use a hybrid model where:
 - This allows gradual migration without complete rewrite
 
 The choice depends on your team size, expertise, application requirements, and organizational structure. There's no one-size-fits-all solution—both architectures have their place in modern software development.
+
+## Prepare enviroments: <br>
+```bash
+# sudo apt install python3 python3-pip python3-virtualenv
+```
+create virtual environments <br>
+```bash
+# virtualenv env
+# source env/bin/activate
+```
+install fastapi : <br>
+```bash
+# pip3 install fastapifastapi[standard]
+```
+create main.py file : <br>
+```bash
+# vi main.py
+```
+create simple app like this : <br>
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+
+async def root():
+    return {"message": "Hello World"}
+```
+and then you can start your app with below command : <br>
+```bash
+fastapi dev main.py --host 0.0.0.0 --port 8000
+```
+![1](https://github.com/user-attachments/assets/6ef85b8c-3cc0-46e6-a7b5-2664a81a9740) <br>
+![2](https://github.com/user-attachments/assets/1768ac80-9066-4e66-9b74-fd26202cb2b8) <br>
+
+or we can use uvicorn to expose port and use python to run program : <br>
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+
+async def root():
+    return {"message": "Hello World"}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
+```
+![3](https://github.com/user-attachments/assets/196ef443-e8bc-4c7f-aafa-c9313af6f0b6) <br>
+
+
